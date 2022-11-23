@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
 
     const menuItems = <>
-        <li className='font-bold'><Link to='/'>Home</Link></li>
-        <li className='font-bold'><Link to='/blog'>Blog</Link></li>
-        <li className='font-bold'><Link to='/login'>Login</Link></li>
-        <li className='font-bold'><Link ></Link></li>
+        <li className='font-bold text-black'><Link to='/'>Home</Link></li>
+        <li className='font-bold text-black'><Link to='/blog'>Blog</Link></li>
+        <li className='font-bold text-black'><Link to='/login'>Login</Link></li>
+        <li className='font-bold text-black'><Link to=''></Link></li>
     </>
 
     return (
