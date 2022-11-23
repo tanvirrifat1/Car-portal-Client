@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 
@@ -21,6 +22,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                toast.success('Login successful', { autoClose: 500 })
                 navigate(from, { replace: true });
             })
             .catch(error => {
