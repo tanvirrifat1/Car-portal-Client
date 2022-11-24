@@ -2,8 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-const CarCard = ({ carCard }) => {
+const CarCard = ({ carCard, setBookingCar }) => {
     const { image_url, title, location, originalPrice, resalePrice, categoryName, published_date } = carCard;
+    console.log(originalPrice)
     return (
         <div>
             <div className="card bg-base-100 shadow-xl">
@@ -21,11 +22,15 @@ const CarCard = ({ carCard }) => {
                     <p>{categoryName}</p>
                     <p>{published_date}</p>
                 </div>
-                <Link>
-                    <div className='flex justify-center mb-6'>
-                        <button className='btn btn-primary text-xl'>Book Now</button>
-                    </div>
-                </Link>
+
+                <div className='flex justify-center mb-6'>
+                    <label
+                        htmlFor="bookingModal"
+                        className='btn btn-primary text-xl'
+                        onClick={() => setBookingCar(carCard)}
+                    >Book Now</label>
+                </div>
+
             </div>
         </div>
     );

@@ -28,6 +28,7 @@ const Category = () => {
                         ></Categories>)
                     }
                 </div>
+
             </div>
         </div>
     );

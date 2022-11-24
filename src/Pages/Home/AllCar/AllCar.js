@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import BookingModal from '../../BookingModal/BookingModal';
 import CarCard from './CarCard';
 
 const AllCar = () => {
-
     const [allcar, setAllCar] = useState([]);
+    const [bookingCar, setBookingCar] = useState(null)
+
     useEffect(() => {
         fetch('http://localhost:5000/allcar')
             .then(res => res.json())
@@ -23,9 +25,15 @@ const AllCar = () => {
                         allcar?.map(carCard => <CarCard
                             key={carCard._id}
                             carCard={carCard}
+                            setBookingCar={setBookingCar}
                         ></CarCard>)
                     }
                 </div>
+                {
+                    bookingCar &&
+                    <BookingModal
+                        bookingCar={bookingCar}
+                    ></BookingModal>}
             </div>
         </div>
     );
