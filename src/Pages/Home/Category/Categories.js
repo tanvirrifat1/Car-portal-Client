@@ -1,22 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const Categories = ({ category }) => {
-    const { image_url, name, description, categoryName } = category;
+const Categories = () => {
+    const [carData, setCarData] = useState([])
+    console.log(carData)
+    useEffect(() => {
+        fetch('http://localhost:5000/category')
+            .then(res => res.json())
+            .then(data => {
+                setCarData(data)
+            })
+    }, [])
     return (
-        <div className="card bg-base-100 shadow-xl">
-            <figure className="px-10 pt-10">
-                <img src={image_url} alt="Shoes" className="rounded-xl w-full h-56" />
-            </figure>
-            <div className="card-body items-center text-center">
-                <h2 className="card-title">{name}</h2>
-                <p>{description}</p>
+        <div className=" mt-4">
+            <p className='text-2xl flex justify-center'>All Categories</p>
+            <div className='flex justify-center mt-6'>
+                {
+                    carData.map(data => <div className='grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+                        <Link to={`car/${data.name}`}>
+                            <button className='btn btn-primary text-white w-32'>
+                                {data.name}
+                            </button>
+                        </Link>
+                    </div>)
+                }
             </div>
-            <Link to='/allcar'>
-                <div className='flex justify-center mb-6'>
-                    <button className='btn btn-primary text-xl'>{categoryName}</button>
-                </div>
-            </Link>
         </div>
     );
 };
