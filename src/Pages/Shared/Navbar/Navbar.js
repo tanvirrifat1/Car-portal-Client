@@ -1,14 +1,38 @@
-import React from 'react';
-import { FaGofore, FaCarAlt } from "react-icons/fa";
+import React, { useContext } from 'react';
+import { FaCarAlt } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Navbar = () => {
+
+    const { user, logOut } = useContext(AuthContext)
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { toast.warning('LogOut Successfully', { autoClose: 500 }) })
+            .catch(err => console.error(err))
+    }
+
 
     const menuItems = <>
         <li className='font-bold text-black'><Link to='/'>Home</Link></li>
         <li className='font-bold text-black'><Link to='/blog'>Blog</Link></li>
-        <li className='font-bold text-black'><Link to='/login'>Login</Link></li>
+        {/* <li className='font-bold text-black'><Link to='/login'>Login</Link></li> */}
         <li className='font-bold text-black'><Link to=''></Link></li>
+        {user?.uid ?
+            <>
+                <li className='font-bold text-black'><button onClick={handleLogOut}>Sign Out</button></li>
+            </>
+            :
+            <li className='font-bold text-black'><Link to='/login'>Login</Link></li>
+        }
+        {user?.photoURL ?
+            <img className=' w-12 h-12 rounded-full dark:bg-gray-500'
+                src={user?.photoURL} alt=""></img>
+            :
+            <></>
+        }
     </>
 
     return (
