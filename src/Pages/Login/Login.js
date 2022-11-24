@@ -4,11 +4,12 @@ import { FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../contexts/AuthProvider';
+import Loading from '../Home/Loading/Loading';
 
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const { signIn, googleSignIn } = useContext(AuthContext);
+    const { signIn, googleSignIn, loading } = useContext(AuthContext);
     const [loginError, setLoginError] = useState('');
     const location = useLocation();
     const navigate = useNavigate();
@@ -39,6 +40,10 @@ const Login = () => {
                 console.log(user)
             })
             .catch(err => console.error(err))
+    }
+
+    if (loading) {
+        return <Loading></Loading>
     }
 
     return (

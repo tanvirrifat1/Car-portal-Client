@@ -4,10 +4,11 @@ import { FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../contexts/AuthProvider';
+import Loading from '../Home/Loading/Loading';
 
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { createUser, updateUser, googleSignIn } = useContext(AuthContext);
+    const { createUser, updateUser, googleSignIn, loading } = useContext(AuthContext);
     const [signUpError, setSignUPError] = useState('')
     const handleSignUp = (data) => {
         console.log(data);
@@ -39,6 +40,10 @@ const SignUp = () => {
             .catch(err => console.error(err))
     }
 
+    if (loading) {
+        return <Loading></Loading>
+    }
+
     return (
         <div className='h-[800px] flex justify-center items-center'>
             <div className='w-96 p-7'>
@@ -58,6 +63,19 @@ const SignUp = () => {
                         })} className="input input-bordered w-full max-w-xs" />
                         {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
                     </div>
+
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Account Type</span>
+                        </label>
+                        <select  {...register("accountType")} className="select  select-ghost border-1 input-bordered w-full  ">
+                            <option selected>Buyer</option>
+
+                            <option >Seller</option>
+
+                        </select>
+                    </div>
+
                     <div className="form-control w-full max-w-xs">
                         <label className="label"> <span className="label-text">Password</span></label>
                         <input type="password" {...register("password", {

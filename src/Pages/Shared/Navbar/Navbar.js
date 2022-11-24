@@ -18,8 +18,7 @@ const Navbar = () => {
     const menuItems = <>
         <li className='font-bold text-black'><Link to='/'>Home</Link></li>
         <li className='font-bold text-black'><Link to='/blog'>Blog</Link></li>
-        {/* <li className='font-bold text-black'><Link to='/login'>Login</Link></li> */}
-        <li className='font-bold text-black'><Link to=''></Link></li>
+        {/* <li className='font-bold text-black'><Link to=''></Link></li> */}
         {user?.uid ?
             <>
                 <li className='font-bold text-black'><button onClick={handleLogOut}>Sign Out</button></li>
