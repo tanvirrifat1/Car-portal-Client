@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 
 const CarCard = ({ carCard, setBookingCar }) => {
-    const { image_url, title, location, originalPrice, resalePrice, categoryName, published_date } = carCard;
+    const { image_url, title, originalPrice, author } = carCard;
     console.log(originalPrice)
     return (
         <div>
@@ -13,14 +12,6 @@ const CarCard = ({ carCard, setBookingCar }) => {
                 </figure>
                 <div className="card-body items-center text-center">
                     <h2 className="card-title">{title}</h2>
-
-                </div>
-                <div className='ml-4'>
-                    <h4>{location}</h4>
-                    <p><small>{originalPrice}</small></p>
-                    <p><small>{resalePrice}</small></p>
-                    <p>{categoryName}</p>
-                    <p>{published_date}</p>
                 </div>
 
                 <div className='flex justify-center mb-6'>
