@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import Categories from './Categories';
+import CarCard from './CarCard';
 
+const AllCar = () => {
 
-const Category = () => {
-    const [allCategory, setAllCategory] = useState([]);
+    const [allcar, setAllCar] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/CarsCollection')
+        fetch('http://localhost:5000/allcar')
             .then(res => res.json())
             .then(data => {
-                setAllCategory(data);
+                setAllCar(data);
                 console.log(data)
             })
     }, [])
-
-
     return (
         <div>
             <div className='mt-16 mb-8'>
@@ -22,10 +20,10 @@ const Category = () => {
                 </div>
                 <div className='grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                     {
-                        allCategory.map(category => <Categories
-                            key={category.id}
-                            category={category}
-                        ></Categories>)
+                        allcar?.map(carCard => <CarCard
+                            key={carCard._id}
+                            carCard={carCard}
+                        ></CarCard>)
                     }
                 </div>
             </div>
@@ -33,4 +31,4 @@ const Category = () => {
     );
 };
 
-export default Category;
+export default AllCar;
