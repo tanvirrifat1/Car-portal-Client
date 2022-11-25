@@ -28,7 +28,7 @@ const BookingModal = ({ bookingCar, setBookingCar }) => {
         }
 
         console.log(booking)
-        toast.success('Booking Confirmed', { autoClose: 500 })
+
         setBookingCar(null)
         fetch('http://localhost:5000/orders', {
             method: 'POST',
@@ -40,7 +40,7 @@ const BookingModal = ({ bookingCar, setBookingCar }) => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                toast.success('Booked', { autoClose: 500 })
+                toast.success('Booking Confirmed', { autoClose: 500 })
             })
 
     }
