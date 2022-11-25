@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const BookingModal = ({ bookingCar, setBookingCar }) => {
-    const { title, author, resalePrice, originalPrice, categoryName } = bookingCar
+    const { title, author, resalePrice, originalPrice, categoryName, location } = bookingCar
     const { user } = useContext(AuthContext)
 
     const current = new Date();
@@ -24,11 +24,25 @@ const BookingModal = ({ bookingCar, setBookingCar }) => {
             resalePrice,
             email,
             phone,
+            location
         }
 
         console.log(booking)
         toast.success('Booking Confirmed', { autoClose: 500 })
         setBookingCar(null)
+        fetch('http://localhost:5000/orders', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(booking)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                toast.success('Booked', { autoClose: 500 })
+            })
+
     }
 
     return (
@@ -40,9 +54,10 @@ const BookingModal = ({ bookingCar, setBookingCar }) => {
                     <h3 className="text-lg font-bold mb-3">{title}</h3>
                     <form onSubmit={handleBooking}>
                         <input type="text" value={date} placeholder="Type here" className="input input-bordered input-primary w-full" />
-                        <input type="text" placeholder="Type here" value={resalePrice} className="input input-bordered input-primary mt-2 w-full" />
-                        <input type="text" placeholder="Type here" value={originalPrice} className="input input-bordered input-primary mt-2 w-full" />
-                        <input type="text" placeholder="Type here" value={categoryName} className="input input-bordered input-primary mt-2 w-full" />
+                        <input name='resalePrice' type="text" placeholder="Type here" value={resalePrice} className="input input-bordered input-primary mt-2 w-full" />
+                        <input name='originalPrice' type="text" placeholder="Type here" value={originalPrice} className="input input-bordered input-primary mt-2 w-full" />
+                        <input name='categoryName' type="text" placeholder="Type here" value={categoryName} className="input input-bordered input-primary mt-2 w-full" />
+                        <input name='categoryName' type="text" placeholder="Type here" value={location} className="input input-bordered input-primary mt-2 w-full" />
 
                         <input name='email' type="text" placeholder="email" defaultValue={user?.email} className="input input-bordered input-primary mt-2 w-full" readOnly />
                         <input name='name' type="text" placeholder="name" defaultValue={user?.displayName} className="input input-bordered input-primary mt-2 w-full" />
