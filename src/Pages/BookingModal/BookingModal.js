@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../contexts/AuthProvider';
 
-const BookingModal = ({ bookingCar, setBookingCar }) => {
+const BookingModal = ({ bookingCar }) => {
     const { title, author, resalePrice, originalPrice, categoryName } = bookingCar
     const { user } = useContext(AuthContext)
 
@@ -25,18 +25,18 @@ const BookingModal = ({ bookingCar, setBookingCar }) => {
 
         console.log(booking)
         toast.success('Booking Confirmed', { autoClose: 500 })
-        setBookingCar(null)
+        // setBookingCar(null)
     }
 
     return (
         <div>
-            <input type="checkbox" id="bookingModal" className="modal-toggle" />
+            <input type="checkbox" id="booking-modal" className="modal-toggle" />
             <div className="modal">
                 <div className="modal-box relative">
-                    <label htmlFor="bookingModal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <h3 className="text-lg font-bold mb-3">{title}</h3>
                     <form onSubmit={handleBooking}>
-                        <input type="text" value={author.published_date} placeholder="Type here" className="input input-bordered input-primary w-full" />
+                        <input type="text" value={author?.published_date} placeholder="Type here" className="input input-bordered input-primary w-full" />
                         <input type="text" placeholder="Type here" value={resalePrice} className="input input-bordered input-primary mt-2 w-full" />
                         <input type="text" placeholder="Type here" value={originalPrice} className="input input-bordered input-primary mt-2 w-full" />
                         <input type="text" placeholder="Type here" value={categoryName} className="input input-bordered input-primary mt-2 w-full" />
