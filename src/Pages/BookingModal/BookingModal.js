@@ -39,8 +39,10 @@ const BookingModal = ({ bookingCar, setBookingCar }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
-                toast.success('Booking Confirmed', { autoClose: 500 })
+                if (data.acknowledged) {
+                    console.log(data)
+                    toast.success('Booking Confirmed', { autoClose: 500 })
+                }
             })
 
     }

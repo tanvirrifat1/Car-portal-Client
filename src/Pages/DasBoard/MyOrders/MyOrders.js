@@ -1,6 +1,4 @@
-import { async } from '@firebase/util';
 import { useQuery } from '@tanstack/react-query';
-import { data } from 'autoprefixer';
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
@@ -41,8 +39,8 @@ const MyOrders = () => {
 
                         {
                             orders?.map((order, i) =>
-                                <tr>
-                                    <th>{i}</th>
+                                <tr key={order._id}>
+                                    <th>{i + 1}</th>
                                     <td>{order.name}</td>
                                     <td>{order.title}</td>
                                     <td>{order.date}</td>
