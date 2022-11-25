@@ -5,6 +5,7 @@ import AllCar from "../../Pages/Home/AllCar/AllCar";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import SignUp from "../../Pages/SignUp/SignUp";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
             // },
             {
                 path: '/car/:id',
-                element: <AllCar></AllCar>,
+                element: <PrivateRoute><AllCar></AllCar></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/allcar/${params.id}`)
             }
         ]

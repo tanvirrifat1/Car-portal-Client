@@ -26,6 +26,7 @@ const AllCar = () => {
                 bookingCar &&
                 <BookingModal
                     bookingCar={bookingCar}
+                    setBookingCar={setBookingCar}
                 ></BookingModal>
             }
         </div>
