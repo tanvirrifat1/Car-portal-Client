@@ -18,9 +18,9 @@ const Navbar = () => {
     const menuItems = <>
         <li className='font-bold text-black'><Link to='/'>Home</Link></li>
         <li className='font-bold text-black'><Link to='/blog'>Blog</Link></li>
-        <li className='font-bold text-black'><Link to='/dasboard'>DashBoard</Link></li>
         {user?.uid ?
             <>
+                <li className='font-bold text-black'><Link to='/dasboard'>DashBoard</Link></li>
                 <li className='font-bold text-black'><button onClick={handleLogOut}>Sign Out</button></li>
             </>
             :

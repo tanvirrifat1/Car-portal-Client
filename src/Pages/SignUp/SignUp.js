@@ -4,17 +4,26 @@ import { FaGoogle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../contexts/AuthProvider';
+import useToken from '../../Hooks/useToken';
 import Loading from '../Home/Loading/Loading';
 
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { createUser, updateUser, googleSignIn, loading } = useContext(AuthContext);
     const [signUpError, setSignUPError] = useState('')
+    const [createUserEmail, setCreatedUserEmail] = useState('')
+
+    const [token] = useToken(createUserEmail)
     const navigate = useNavigate()
+
+    if (token) {
+        navigate('/')
+    }
 
     const handleSignUp = (data) => {
         console.log(data);
         setSignUPError('');
+
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
@@ -25,7 +34,7 @@ const SignUp = () => {
                 }
                 updateUser(userInfo)
                     .then(() => {
-                        saveUser(data.name, data.email)
+                        saveUser(data.name, data.email, data.accountType)
 
                     })
                     .catch(err => console.log(err));
@@ -41,16 +50,13 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                saveUser(user.displayName, user.email)
             })
             .catch(err => console.error(err))
     }
 
-    if (loading) {
-        return <Loading></Loading>
-    }
-
-    const saveUser = (name, email) => {
-        const user = { name, email };
+    const saveUser = (name, email, accountType) => {
+        const user = { name, email, accountType };
         fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
@@ -61,9 +67,24 @@ const SignUp = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                navigate('/')
+                // navigate('/')
+                setCreatedUserEmail(email)
             })
     }
+
+    if (loading) {
+        return <Loading></Loading>
+    }
+    // const getUserToken = email => {
+    //     fetch(`http://localhost:5000/jwt?email=${email}`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             if (data.accessToken) {
+    //                 localStorage.setItem('accessToken', data.accessToken)
+    //                 navigate('/')
+    //             }
+    //         })
+    // }
 
     return (
         <div className='h-[800px] flex justify-center items-center'>
