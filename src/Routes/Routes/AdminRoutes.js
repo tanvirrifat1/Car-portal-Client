@@ -9,7 +9,7 @@ const AdminRoutes = ({ children }) => {
     const { user, loading } = useContext(AuthContext)
     const [isAdmin, isAdminLoading] = useAdmin(user?.email);
     const location = useLocation()
-    console.log(loading)
+    // console.log(loading)
     if (loading || isAdminLoading) {
         return (
             <div className='h-screen'>

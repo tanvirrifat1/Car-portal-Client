@@ -34,7 +34,7 @@ const SignUp = () => {
                 }
                 updateUser(userInfo)
                     .then(() => {
-                        saveUser(data.name, data.email, data.accountType)
+                        saveUser(data.name, data.email, data.role)
 
                     })
                     .catch(err => console.log(err));
@@ -55,8 +55,8 @@ const SignUp = () => {
             .catch(err => console.error(err))
     }
 
-    const saveUser = (name, email, accountType) => {
-        const user = { name, email, accountType };
+    const saveUser = (name, email, role) => {
+        const user = { name, email, role };
         fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
@@ -110,7 +110,7 @@ const SignUp = () => {
                         <label className="label">
                             <span className="label-text">Account Type</span>
                         </label>
-                        <select  {...register("accountType")} className="select  select-ghost border-1 input-bordered w-full  ">
+                        <select  {...register("role")} className="select  select-ghost border-1 input-bordered w-full  ">
                             <option selected>Buyer</option>
 
                             <option >Seller</option>
@@ -132,7 +132,7 @@ const SignUp = () => {
                 </form>
                 <p>Already have an account <Link className='text-secondary' to="/login">Please Login</Link></p>
                 <div className="divider">OR</div>
-                <button onClick={handleGoogleLogin} class="btn btn-outline btn-primary w-full"><FaGoogle className='mr-2 text-2xl'></FaGoogle> CONTINUE WITH GOOGLE</button>
+                <button onClick={handleGoogleLogin} className="btn btn-outline btn-primary w-full"><FaGoogle className='mr-2 text-2xl'></FaGoogle> CONTINUE WITH GOOGLE</button>
 
             </div>
         </div>

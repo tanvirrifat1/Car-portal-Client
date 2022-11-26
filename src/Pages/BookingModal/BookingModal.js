@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const BookingModal = ({ bookingCar, setBookingCar }) => {
-    const { title, author, resalePrice, originalPrice, categoryName, location } = bookingCar
+    const { title, author, resalePrice, originalPrice, categoryName, location, YearOfPurchase, condition } = bookingCar
     const { user } = useContext(AuthContext)
 
     const current = new Date();
@@ -24,7 +24,9 @@ const BookingModal = ({ bookingCar, setBookingCar }) => {
             resalePrice,
             email,
             phone,
-            location
+            location,
+            YearOfPurchase,
+            condition
         }
 
         console.log(booking)
@@ -60,6 +62,8 @@ const BookingModal = ({ bookingCar, setBookingCar }) => {
                         <input name='originalPrice' type="text" placeholder="Type here" value={originalPrice} className="input input-bordered input-primary mt-2 w-full" />
                         <input name='categoryName' type="text" placeholder="Type here" value={categoryName} className="input input-bordered input-primary mt-2 w-full" />
                         <input name='categoryName' type="text" placeholder="Type here" value={location} className="input input-bordered input-primary mt-2 w-full" />
+                        <input name='YearOfPurchase' type="text" placeholder="Type here" value={YearOfPurchase} className="input input-bordered input-primary mt-2 w-full" />
+                        <input name='condition' type="text" placeholder="Type here" value={condition} className="input input-bordered input-primary mt-2 w-full" />
 
                         <input name='email' type="text" placeholder="email" defaultValue={user?.email} className="input input-bordered input-primary mt-2 w-full" readOnly />
                         <input name='name' type="text" placeholder="name" defaultValue={user?.displayName} className="input input-bordered input-primary mt-2 w-full" />

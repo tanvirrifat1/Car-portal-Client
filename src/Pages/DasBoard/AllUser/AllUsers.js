@@ -15,15 +15,18 @@ const AllUsers = () => {
 
     const handleMakeAdmin = id => {
         fetch(`http://localhost:5000/users/admin/${id}`, {
-            method: 'PUT'
+            method: 'PUT',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
         })
             .then(res => res.json())
             .then(data => {
-                if (data.modifiedCount > 0) {
-                    toast.success('Make Admin Successfully', { autoClose: 500 })
-                    refetch()
-                }
+                console.log(data);
+                toast.success('Make Admin Confirmed', { autoClose: 500 })
+                refetch()
             })
+
     }
 
     return (

@@ -37,6 +37,8 @@ const MyOrders = () => {
                             <th>originalPrice</th>
                             <th>resalePrice</th>
                             <th>phone</th>
+                            <th>YearOfPurchase</th>
+                            <th>condition</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -53,6 +55,8 @@ const MyOrders = () => {
                                     <td>{order.originalPrice}</td>
                                     <td>{order.resalePrice}</td>
                                     <td>{order.phone}</td>
+                                    <td>{order.YearOfPurchase}</td>
+                                    <td>{order.condition}</td>
                                 </tr>
                             )
                         }
