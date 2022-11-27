@@ -6,6 +6,7 @@ import AddProducts from "../../Pages/DasBoard/AddProducts/AddProducts";
 import AllUsers from "../../Pages/DasBoard/AllUser/AllUsers";
 import ManageProducts from "../../Pages/DasBoard/ManageProduct/ManageProducts";
 import MyOrders from "../../Pages/DasBoard/MyOrders/MyOrders";
+import Payment from "../../Pages/DasBoard/Payment/Payment";
 import Error from "../../Pages/Error/Error";
 // import MyAppointment from "../../Pages/DasBoard/MyOrders/MyOrders";
 import AllCar from "../../Pages/Home/AllCar/AllCar";
@@ -61,6 +62,11 @@ const router = createBrowserRouter([
             {
                 path: '/dasboard/allusers',
                 element: <AdminRoutes><AllUsers></AllUsers></AdminRoutes>
+            },
+            {
+                path: '/dasboard/payment/:id',
+                element: <AdminRoutes><Payment></Payment></AdminRoutes>,
+                loader: ({ params }) => fetch(`http://localhost:5000/orders/${params.id}`)
             },
             {
                 path: '/dasboard/allproducts',
