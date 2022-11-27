@@ -111,9 +111,9 @@ const SignUp = () => {
                             <span className="label-text">Account Type</span>
                         </label>
                         <select  {...register("role")} className="select  select-ghost border-1 input-bordered w-full  ">
-                            <option selected>Buyer</option>
+                            <option selected>buyer</option>
 
-                            <option >Seller</option>
+                            <option >seller</option>
 
                         </select>
                     </div>

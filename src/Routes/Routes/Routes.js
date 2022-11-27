@@ -4,7 +4,6 @@ import Main from "../../Layout/Main";
 import Blog from "../../Pages/Blog/Blog";
 import AddProducts from "../../Pages/DasBoard/AddProducts/AddProducts";
 import AllUsers from "../../Pages/DasBoard/AllUser/AllUsers";
-import DasBoard from "../../Pages/DasBoard/DasBoard";
 import ManageProducts from "../../Pages/DasBoard/ManageProduct/ManageProducts";
 import MyOrders from "../../Pages/DasBoard/MyOrders/MyOrders";
 import Error from "../../Pages/Error/Error";
@@ -65,11 +64,11 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dasboard/allproducts',
-                element: <AdminRoutes><AddProducts></AddProducts></AdminRoutes>
+                element: <SellerRoutes><AddProducts></AddProducts></SellerRoutes>
             },
             {
                 path: '/dasboard/manageProduct',
-                element: <AdminRoutes><ManageProducts></ManageProducts></AdminRoutes>
+                element: <SellerRoutes><ManageProducts></ManageProducts></SellerRoutes>
             },
         ]
     }
