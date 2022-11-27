@@ -21,10 +21,13 @@ Technologies:
 ## Private Repo [Client Side](
 ## Server Repo [Server Side](
 ## Server Live [Server Live](
- 
+ //------------//
  *admin gmail(ph@gmail.com)
  *pass(Ph123#$)
-
+----------------
+seller email(tomcurs@gmail.com)
+pass(Tom123#$)
+//--------------//
 ***
 
 ## `Technologies Use`

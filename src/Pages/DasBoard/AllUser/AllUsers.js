@@ -29,8 +29,9 @@ const AllUsers = () => {
 
     }
 
-    const handleDelete = users => {
-        fetch(`http://localhost:5000/users/${users?.email}`, {
+    const handleDelete = id => {
+
+        fetch(`http://localhost:5000/users/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -39,7 +40,10 @@ const AllUsers = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                refetch()
+                if (data.deletedCount > 0) {
+                    toast.success('Delete confirmed', { autoClose: 500 })
+                    refetch()
+                }
             })
     }
 
@@ -68,10 +72,10 @@ const AllUsers = () => {
                                     <td>{user.role}</td>
                                     <td>{user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user?._id)} className="btn btn-xs btn-primary">Make Admin</button>}</td>
                                     <td>
-                                        <button onClick={() => handleDelete(users.email)} className="btn btn-square btn-outline">
+                                        <button onClick={() => handleDelete(user._id)} className="btn btn-square btn-outline">
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
                                         </button>
-                                    </td>
+                                    </td>.
                                 </tr>)
                         }
 
