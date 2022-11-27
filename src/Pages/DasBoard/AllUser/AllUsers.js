@@ -29,6 +29,20 @@ const AllUsers = () => {
 
     }
 
+    // const handleDelete = users => {
+    //     fetch(`http://localhost:5000/users/${users?.email}`, {
+    //         method: 'DELETE',
+    //         headers: {
+    //             authorization: `bearer ${localStorage.getItem('accessToken')}`
+    //         }
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log(data)
+    //             refetch()
+    //         })
+    // }
+
     return (
         <div>
             <h2 className="text-3xl">All Users</h2>

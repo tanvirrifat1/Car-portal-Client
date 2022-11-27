@@ -3,24 +3,24 @@ import { Link } from 'react-router-dom';
 
 const Categories = () => {
     const [carData, setCarData] = useState([])
-    // console.log(carData)
+    console.log(carData)
+
     useEffect(() => {
-        fetch('http://localhost:5000/category')
+        fetch(`http://localhost:5000/category`)
             .then(res => res.json())
             .then(data => {
                 setCarData(data)
             })
     }, [])
-
     return (
-        <div className=" mt-4">
-            <p className='text-4xl flex justify-center text-indigo-600'>All Categories</p>
-            <div className='flex justify-center mt-6'>
+        <div className="card shadow-xl">
+            <p className='text-2xl'>All Categories</p>
+            <div className='flex justify-center'>
                 {
-                    carData.map(data => <div className='grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
-                        <Link to={`car/${data.name}`}>
-                            <button className='btn btn-primary text-white w-32'>
-                                {data.name}
+                    carData?.map(data => <div className='grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+                        <Link to={`car/${data?._id}`}>
+                            <button className='btn btn-primary text-white w-full '>
+                                {data?.name}
                             </button>
                         </Link>
                     </div>)

@@ -7,6 +7,7 @@ import AllUsers from "../../Pages/DasBoard/AllUser/AllUsers";
 import DasBoard from "../../Pages/DasBoard/DasBoard";
 import ManageProducts from "../../Pages/DasBoard/ManageProduct/ManageProducts";
 import MyOrders from "../../Pages/DasBoard/MyOrders/MyOrders";
+import Error from "../../Pages/Error/Error";
 // import MyAppointment from "../../Pages/DasBoard/MyOrders/MyOrders";
 import AllCar from "../../Pages/Home/AllCar/AllCar";
 import Home from "../../Pages/Home/Home/Home";
@@ -14,11 +15,13 @@ import Login from "../../Pages/Login/Login";
 import SignUp from "../../Pages/SignUp/SignUp";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import AdminRoutes from "./AdminRoutes";
+import SellerRoutes from "./SellerRoutes";
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <Error></Error>,
         children: [
             {
                 path: '/',
@@ -50,6 +53,7 @@ const router = createBrowserRouter([
     {
         path: '/dasboard',
         element: <PrivateRoute> <DashboardLayout></DashboardLayout></PrivateRoute>,
+        errorElement: <Error></Error>,
         children: [
             {
                 path: '/dasboard',

@@ -10,7 +10,7 @@ const useSeller = email => {
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);
-                    setIsSeller(data.isAdmin)
+                    setIsSeller(data.isSeller)
                     setIsSellerLoading(false);
                 })
         }
@@ -19,3 +19,4 @@ const useSeller = email => {
     return [isSeller, isSellerLoading]
 }
 export default useSeller;
+
