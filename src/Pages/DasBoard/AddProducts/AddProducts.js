@@ -1,5 +1,6 @@
 
 import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
@@ -8,12 +9,12 @@ const AddProducts = () => {
     const { user } = useContext(AuthContext)
     const imageHostKey = process.env.REACT_APP_imgbb_key
 
-    console.log('image', imageHostKey)
+    const navigate = useNavigate()
 
     const [carData, setCarData] = useState([])
     const categoryId = carData;
     useEffect(() => {
-        fetch('http://localhost:5000/category')
+        fetch('https://final-project-server-tanvirrifat1.vercel.app/category')
             .then(res => res.json())
             .then(data => {
                 setCarData(data)
@@ -66,7 +67,7 @@ const AddProducts = () => {
                     author
                 }
 
-                fetch('http://localhost:5000/addcar', {
+                fetch('https://final-project-server-tanvirrifat1.vercel.app/addcar', {
                     method: 'PUT',
                     headers: {
                         'content-type': 'application/json'
@@ -78,6 +79,7 @@ const AddProducts = () => {
                     .then(data => {
                         console.log(data)
                         form.reset()
+                        navigate('/dasboard/manageProduct')
                         toast.success('Order successfully', { autoClose: 500 })
                     })
                 console.log("All Product", AddProduct);

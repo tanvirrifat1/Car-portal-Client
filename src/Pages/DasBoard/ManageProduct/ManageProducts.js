@@ -11,7 +11,7 @@ const ManageProducts = () => {
         queryKey: ['myproduct'],
         queryFn: async () => {
             try {
-                const res = await fetch(`http://localhost:5000/myproduct?email=${user?.email}`, {
+                const res = await fetch(`https://final-project-server-tanvirrifat1.vercel.app/myproduct?email=${user?.email}`, {
                     headers: {
                         authorization: `bearer ${localStorage.getItem('accessToken')}`
                     }
@@ -27,7 +27,7 @@ const ManageProducts = () => {
     })
 
     const handleDeleteProduct = product => {
-        fetch(`http://localhost:5000/products/${product?._id}`, {
+        fetch(`https://final-project-server-tanvirrifat1.vercel.app/products/${product?._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

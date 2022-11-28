@@ -6,7 +6,7 @@ const Categories = () => {
     console.log(carData)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/category`)
+        fetch(`https://final-project-server-tanvirrifat1.vercel.app/category`)
             .then(res => res.json())
             .then(data => {
                 setCarData(data)
