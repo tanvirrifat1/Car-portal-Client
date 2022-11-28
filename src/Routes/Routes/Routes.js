@@ -8,7 +8,6 @@ import ManageProducts from "../../Pages/DasBoard/ManageProduct/ManageProducts";
 import MyOrders from "../../Pages/DasBoard/MyOrders/MyOrders";
 import Payment from "../../Pages/DasBoard/Payment/Payment";
 import Error from "../../Pages/Error/Error";
-// import MyAppointment from "../../Pages/DasBoard/MyOrders/MyOrders";
 import AllCar from "../../Pages/Home/AllCar/AllCar";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
@@ -21,7 +20,7 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
-        // errorElement: <Error></Error>,
+        errorElement: <Error></Error>,
         children: [
             {
                 path: '/',
@@ -39,10 +38,7 @@ const router = createBrowserRouter([
                 path: '/blog',
                 element: <Blog></Blog>
             },
-            // {
-            //     path: '/allcar',
-            //     element: <AllCar></AllCar>
-            // },
+
             {
                 path: '/car/:id',
                 element: <PrivateRoute><AllCar></AllCar></PrivateRoute>,
@@ -53,7 +49,7 @@ const router = createBrowserRouter([
     {
         path: '/dasboard',
         element: <PrivateRoute> <DashboardLayout></DashboardLayout></PrivateRoute>,
-        // errorElement: <Error></Error>,
+        errorElement: <Error></Error>,
         children: [
             {
                 path: '/dasboard',

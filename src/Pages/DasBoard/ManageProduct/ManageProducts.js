@@ -56,8 +56,6 @@ const ManageProducts = () => {
                             <th></th>
                             <th>Image</th>
                             <th>Name</th>
-                            <th>publishedDate</th>
-                            <th>Category</th>
                             <th>Email</th>
                             <th>original_price</th>
                             <th>resalePrice</th>
@@ -78,8 +76,6 @@ const ManageProducts = () => {
 
                                     </div></td>
                                     <td>{product.title}</td>
-                                    <td>{product.product_name}</td>
-                                    <td>{product.addProduct}</td>
                                     <td>{product.email}</td>
                                     <td>{product.original_price}</td>
                                     <td>{product.resalePrice}</td>

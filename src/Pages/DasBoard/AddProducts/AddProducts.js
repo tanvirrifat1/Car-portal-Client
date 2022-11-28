@@ -30,7 +30,10 @@ const AddProducts = () => {
         const condition = form.condition.value;
         const location = form.location.value
         const title = form.title.value
+        const author = {
+            name: user.displayName,
 
+        };
 
         const image = form.image.files[0];
         console.log(image);
@@ -59,7 +62,8 @@ const AddProducts = () => {
                     condition,
                     location,
                     title,
-                    image_url: imageData.data.url
+                    image_url: imageData.data.url,
+                    author
                 }
 
                 fetch('http://localhost:5000/addcar', {

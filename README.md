@@ -1,26 +1,11 @@
+1.My project is a full stack development project
 
-##`Features`
-* Used car
-*  Authentication [Login , Google SIgnin, Register]
-*  Add Service
-* Review Add and Public Review
-* Profile
-* Some  Question Blog Page
-* Package Price And Package Details
+2.This project is for selling and buying old cars
 
-***
 
-## `Technologies Use`
+3.There are many functionalities in this project, one of them is that the user can be a buyer, can be a seller and can be an admin. The admin has some roles, the seller has some roles and the buyer has some roles
 
-Technologies:
-  * Font End : 
-  ReactJs, JSX, ,React Router Dom,  Hooks (useState, useEffect, useNavigate, useLoader, useContext), React Icon, ,Hero,imageBB, Icon, SVG, React Tailwind,Daisi Ui,  React Toastify, firebase Authentication, firebase, NodeJS,cors ...etc
-
-## Live Link
-
-## Private Repo [Client Side](
-## Server Repo [Server Side](
-## Server Live [Server Live](
+4.If admin wants to delete any user can verify and seller can add his products delete can advertise.
  //------------//
  *admin gmail(ph@gmail.com)
  *pass(Ph123#$)
@@ -33,7 +18,7 @@ pass(Tom123#$)
 ## `Technologies Use`
 
 Technologies:
-  * Font End : 
+  *
   ReactJs, JSX, ,React Router Dom,  Hooks (useState, useEffect, useNavigate, useLoader, useContext), React Icon, ,Hero Icon, SVG, React Tailwind,Daisi Ui,  React Toastify, firebase Authentication, fire
 * Backend :
     Express Js , MongoDb,JWT Token, 

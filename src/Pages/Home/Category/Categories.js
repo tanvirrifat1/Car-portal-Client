@@ -14,10 +14,10 @@ const Categories = () => {
     }, [])
     return (
         <div className="card shadow-xl">
-            <p className='text-2xl'>All Categories</p>
-            <div className='flex justify-center'>
+            <p className='text-2xl font-bold'>All Categories</p>
+            <div className=' justify-center grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 {
-                    carData?.map(data => <div className='grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+                    carData?.map(data => <div className='mt-3'>
                         <Link to={`car/${data?._id}`}>
                             <button className='btn btn-primary text-white w-full '>
                                 {data?.name}
@@ -26,7 +26,7 @@ const Categories = () => {
                     </div>)
                 }
             </div>
-        </div>
+        </div >
     );
 };
 
