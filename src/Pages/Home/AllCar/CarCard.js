@@ -2,8 +2,8 @@ import React from 'react';
 
 
 const CarCard = ({ carCard, setBookingCar }) => {
-    const { image_url, title, originalPrice, author } = carCard;
-    console.log(originalPrice)
+    console.log(carCard)
+    const { image_url, title, originalPrice, author, location, resalePrice, YearOfPurchase, condition } = carCard;
     return (
         <div>
             <div className="card bg-base-100 shadow-xl">
@@ -14,6 +14,18 @@ const CarCard = ({ carCard, setBookingCar }) => {
                     <h2 className="card-title">{title}</h2>
                 </div>
 
+                <div className="avatar offline flex justify-center">
+                    <div className="w-16 rounded-full">
+                        <img src={author?.img} alt='' />
+                    </div>
+                </div>
+                <div className=' ml-20'>
+                    <p>${originalPrice}</p>
+                    <p>${resalePrice}</p>
+                    <p>{location}</p>
+                    <p>{YearOfPurchase}</p>
+                    <p>{condition}</p>
+                </div>
                 <div className='flex justify-center mb-6'>
                     <label
                         htmlFor="booking-modal"

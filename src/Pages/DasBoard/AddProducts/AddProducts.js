@@ -1,116 +1,192 @@
-import { useQuery } from '@tanstack/react-query';
-import React, { useContext } from 'react';
-import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+
+import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../../contexts/AuthProvider';
-import Loading from '../../Home/Loading/Loading';
+
 
 const AddProducts = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm()
     const { user } = useContext(AuthContext)
-
     const imageHostKey = process.env.REACT_APP_imgbb_key
 
-    const navigate = useNavigate()
+    console.log('image', imageHostKey)
 
-    const { data: addProduct, isLoading } = useQuery({
-        queryKey: ['addProduct'],
-        queryFn: async () => {
-            const res = await fetch('http://localhost:5000/addProduct');
-            const data = await res.json();
-            return data
-        }
-    })
+    const [carData, setCarData] = useState([])
+    const categoryId = carData;
+    useEffect(() => {
+        fetch('http://localhost:5000/category')
+            .then(res => res.json())
+            .then(data => {
+                setCarData(data)
+            })
+    }, [])
+    const handleAddproducts = (e) => {
+        e.preventDefault()
+        const form = e.target;
+        const password = form.password.value;
+        const email = form.email.value;
+        const original_price = form.original_price.value
+        const resalePrice = form.resalePrice.value;
+        const YearOfPurchase = form.YearOfPurchase.value;
+        const condition = form.condition.value;
+        const location = form.location.value
+        const title = form.title.value
 
-    const handleAddProduct = data => {
-        const image = data.image[0];
+
+        const image = form.image.files[0];
+        console.log(image);
         const formData = new FormData();
-        formData.append('image', image)
-
+        formData.append('image', image);
         const url = `https://api.imgbb.com/1/upload?&key=${imageHostKey}`
+
         fetch(url, {
             method: 'POST',
-            body: formData
-        })
-            .then(res => res.json())
-            .then(imgData => {
-                if (imgData.success) {
-                    console.log(imgData.data.url)
-                    const product = {
-                        name: data.name,
-                        email: data.email,
-                        addProduct: data.addProduct,
-                        image: imgData.data.url
-                    }
-                    // save products
-                    fetch('http://localhost:5000/products', {
-                        method: 'POST',
-                        headers: {
-                            'content-type': 'application/json',
-                            authorization: `bearer ${localStorage.getItem('accessToken')}`
-                        },
-                        body: JSON.stringify(product)
-                    })
-                        .then(res => res.json())
-                        .then(result => {
-                            console.log(result)
-                            toast.success('added successFully', { autoClose: 500 })
-                            navigate('/dasboard/manageProduct')
-                        })
+            body: formData,
+        }).then(res => res.json())
+            .then(imageData => {
+                console.log(imageData);
+                const AddProduct = {
+                    image: imageData.data.url,
+
                 }
+                const brandId = form.categoryId.value;
+                const product = {
+                    password,
+                    email,
+                    categoryId: brandId,
+                    original_price,
+                    resalePrice,
+                    YearOfPurchase,
+                    condition,
+                    location,
+                    title,
+                    image_url: imageData.data.url
+                }
+
+                fetch('http://localhost:5000/addcar', {
+                    method: 'PUT',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(product)
+
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        form.reset()
+                        toast.success('Order successfully', { autoClose: 500 })
+                    })
+                console.log("All Product", AddProduct);
             })
-    }
 
-    if (isLoading) {
-        return <Loading></Loading>
-    }
 
+    }
     return (
-        <div className='w-96 p-7'>
-            <h3 className="text-3xl">Add A Products</h3>
-            <form onSubmit={handleSubmit(handleAddProduct)}>
+        <div>
+            {
+                carData.map(cardt =>
+                    console.log(cardt._id)
+                )
+            }
+            <div className="hero ">
+                <div className="hero-content flex-col">
+                    <form onSubmit={handleAddproducts} className="card">
+                        <div className="card-body">
+                            <div className="form-control grid lg:grid-cols-3">
+                                <label className="label">
+                                    <span className="label-text">Email</span>
+                                </label>
+                                <input type="text" name="email" defaultValue={user?.email} placeholder="email" className="input input-bordered" />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Password</span>
+                                </label>
+                                <input type="text" name="password" placeholder="password" className="input input-bordered" />
+                                <label className="label">
+                                    <a href="#" className="label-text-alt link link-hover">Car Category</a>
+                                </label>
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Selected Car</span>
+                                </label>
+                                <input type="text" name="title" placeholder="Car Model" className="input input-bordered" />
 
-                <div className="form-control w-full max-w-xs">
-                    <label className="label">  <span className="label-text  text-black">Name</span> </label>
-                    <input type="text"
-                        {...register("name")}
-                        className="input input-bordered input-primary w-full max-w-xs" />
-                </div>
+                            </div>
+                            <select
+                                name="categoryId" className="select select-bordered w-full max-w-xs"
+                            >
+                                {carData?.map((category) => (
+                                    <option key={category._id}
 
-                <div className="form-control w-full max-w-xs">
-                    <label className="label">  <span className="label-text  text-black">Email</span> </label>
-                    <input type="email"
-                        {...register("email", {
-                            required: 'Email is required'
-                        })}
-                        className="input input-bordered input-primary w-full max-w-xs" />
-                    {errors.email && <p className='text-error'>{errors?.email?.message}</p>}
-                </div>
-                <div className="form-control w-full max-w-xs">
-                    <label className="label">  <span className="label-text  text-black">AddProducts</span> </label>
-                    <select
-                        {...register('addProduct')}
-                        className="select select-primary w-full max-w-xs text-black">
-                        {
-                            addProduct?.map(addPd => <option
-                                key={addPd._id}
-                                value={addPd.name}
-                            >{addPd.name}</option>)
-                        }
+                                        value={category._id}>
+                                        {category.name}
+                                    </option>
+                                ))}
+                            </select>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">original_price</span>
+                                </label>
+                                <input type="text" name='original_price' placeholder="original_price" className="input input-bordered" />
+                            </div>
+                            <div className="col-span-full   sm:col-span-3">
+                                <label className='block mb-2 text-sm'>
+                                    Select Car Image:
+                                </label>
+                                <div htmlFor='image' className='border border-4 bg-white border-black'>
+                                    <input
 
-                    </select>
+                                        type='file'
+                                        id='image'
+                                        name='image'
+                                        accept='image/*'
+                                        required
+                                    />
+                                </div>
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">resalePrice</span>
+                                </label>
+                                <input type="text" name='resalePrice' placeholder="resalePrice" className="input input-bordered" />
+
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">details</span>
+                                </label>
+                                <input type="text" name='details' placeholder="details" className="input input-bordered" />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">YearOfPurchase</span>
+                                </label>
+                                <input type="text" name='YearOfPurchase' placeholder="YearOfPurchase" className="input input-bordered" />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">condition</span>
+                                </label>
+                                <input type="text" name='condition' placeholder="condition" className="input input-bordered" />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">location</span>
+                                </label>
+                                <input type="text" name='location' placeholder="location" className="input input-bordered" />
+                            </div>
+
+
+                            <div className="form-control mt-6">
+                                <button className="btn btn-primary">Login</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div className="form-control w-full max-w-xs">
-                    <label className="label"> <span className="label-text text-black">Photo</span></label>
-                    <input type="file" {...register("image", {
-                        required: "Photo is Required"
-                    })} className="input input-bordered w-full max-w-xs" />
-                    {errors.img && <p className='text-red-500'>{errors.img.message}</p>}
-                </div>
-                <input className='btn btn-accent w-full mt-4' value='Add Product' type="submit" />
-            </form>
-        </div>
+            </div >
+        </div >
     );
 };
 
