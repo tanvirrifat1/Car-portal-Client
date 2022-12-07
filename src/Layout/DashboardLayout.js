@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { FaAccusoft } from 'react-icons/fa';
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
 import useAdmin from '../Hooks/useAdmin';
@@ -28,16 +29,13 @@ const DashboardLayout = () => {
                         {
                             isAdmin && <>
                                 <li className='font-bold'><Link to='/dasboard/allusers'>All Users</Link></li>
-                                {/* <li><Link to='/dasboard/allproducts'>All Products</Link></li>
-                                <li><Link to='/dasboard/manageProduct'>Manage Products</Link></li> */}
                             </>
                         }
 
 
                         {
                             isSeller && <>
-                                {/* <li><Link to='/dasboard/ayproducts'>My All Products</Link></li> */}
-                                <li className='font-bold'><Link to='/dasboard/allproducts'>Add products</Link></li>
+                                <li className='font-bold'><Link to='/dasboard/allproducts'> Add products</Link></li>
                                 <li className='font-bold'><Link to='/dasboard/manageProduct'>Manage Products</Link></li>
                             </>
                         }

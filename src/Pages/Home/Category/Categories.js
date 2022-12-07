@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import img from '../../../asstesFile/logo/modern-cars-are-studio-room-3d-illustration-3d-render_37416-504.webp'
+import useTitle from '../../../UseTittle';
 
 const Categories = () => {
+    useTitle('Categories')
     const [carData, setCarData] = useState([])
     console.log(carData)
 

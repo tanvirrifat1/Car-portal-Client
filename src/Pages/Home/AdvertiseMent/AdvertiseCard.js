@@ -1,5 +1,4 @@
 import React from 'react';
-import { PhotoProvider, PhotoView } from 'react-photo-view';
 
 const AdvertiseCard = ({ product }) => {
     const { image_url, resalePrice, title } = product

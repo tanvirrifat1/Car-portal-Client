@@ -3,9 +3,11 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../../contexts/AuthProvider';
+import useTitle from '../../../UseTittle';
 
 
 const AddProducts = () => {
+    useTitle('AddProducts')
     const { user } = useContext(AuthContext)
     const imageHostKey = process.env.REACT_APP_imgbb_key
 

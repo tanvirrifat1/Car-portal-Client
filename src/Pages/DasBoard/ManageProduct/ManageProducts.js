@@ -2,10 +2,11 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useState } from 'react';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../../contexts/AuthProvider';
+import useTitle from '../../../UseTittle';
 import Loading from '../../Home/Loading/Loading';
 
 const ManageProducts = () => {
-    // const [deleteProduct, setDeleteProduct] = useState(null)
+    useTitle('ManageProduct')
     const { user } = useContext(AuthContext)
     const { data: products = [], isLoading, refetch } = useQuery({
         queryKey: ['myproduct'],
