@@ -25,7 +25,7 @@ const AddProducts = () => {
         const form = e.target;
         const password = form.password.value;
         const email = form.email.value;
-        const original_price = form.original_price.value
+        const originalPrice = form.originalPrice.value
         const resalePrice = form.resalePrice.value;
         const YearOfPurchase = form.YearOfPurchase.value;
         const condition = form.condition.value;
@@ -57,7 +57,7 @@ const AddProducts = () => {
                     password,
                     email,
                     categoryId: brandId,
-                    original_price,
+                    originalPrice,
                     resalePrice,
                     YearOfPurchase,
                     condition,
@@ -135,7 +135,7 @@ const AddProducts = () => {
                                 <label className="label">
                                     <span className="label-text">original_price</span>
                                 </label>
-                                <input type="text" name='original_price' placeholder="original_price" className="input input-bordered" />
+                                <input type="text" name='originalPrice' placeholder="original_price" className="input input-bordered" />
                             </div>
                             <div className="col-span-full   sm:col-span-3">
                                 <label className='block mb-2 text-sm'>

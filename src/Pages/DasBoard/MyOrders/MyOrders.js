@@ -20,7 +20,7 @@ const MyOrders = () => {
             return data
         }
     })
-    console.log(orders)
+
     return (
         <div>
             <h3 className="text3xl">All Options</h3>

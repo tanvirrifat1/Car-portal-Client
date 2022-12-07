@@ -20,7 +20,7 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
-        errorElement: <Error></Error>,
+        // errorElement: <Error></Error>,
         children: [
             {
                 path: '/',
@@ -49,7 +49,7 @@ const router = createBrowserRouter([
     {
         path: '/dasboard',
         element: <PrivateRoute> <DashboardLayout></DashboardLayout></PrivateRoute>,
-        errorElement: <Error></Error>,
+        // errorElement: <Error></Error>,
         children: [
             {
                 path: '/dasboard',

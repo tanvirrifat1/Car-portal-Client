@@ -46,6 +46,25 @@ const ManageProducts = () => {
         return <Loading></Loading>
     }
 
+    const addProductInAdvertise = (id) => {
+        console.log(id);
+        fetch(
+            `http://localhost:5000/advertise/${id}`,
+            {
+                method: "PUT",
+                headers: {
+                    "content-type": "application/json",
+                },
+            }
+        )
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.matchedCount > 0) {
+                    toast.success("successfully added the product on advertise", { autoClose: 500 });
+                }
+                console.log(data, "the advertised prduct");
+            });
+    }
     return (
         <div>
             <h2 className="text-3xl">Manage Products {products?.length}</h2>
@@ -84,7 +103,15 @@ const ManageProducts = () => {
                                     <td><button onClick={() => handleDeleteProduct(product)} className="btn btn-circle btn-outline">
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
                                     </button></td>
-                                    {/* <td>{product.details}</td> */}
+                                    <td>
+                                        <button
+                                            onClick={() => addProductInAdvertise(product._id)}
+                                            className="btn btn-info"
+                                        >
+                                            advertise
+                                        </button>
+                                    </td>
+
                                 </tr>
                             )
                         }
