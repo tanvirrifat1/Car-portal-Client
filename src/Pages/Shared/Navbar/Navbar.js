@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { FaCarAlt } from "react-icons/fa";
+
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../../contexts/AuthProvider';
@@ -17,15 +17,16 @@ const Navbar = () => {
 
 
     const menuItems = <>
-        <li className='font-bold text-black'><Link to='/'>Home</Link></li>
-        <li className='font-bold text-black'><Link to='/blog'>Blog</Link></li>
+        <li className='font-bold  hover:text-pink-700'><Link to='/'>Home</Link></li>
+        <li className='font-bold  hover:text-pink-700'><Link to='/collection'>Collection</Link></li>
+        <li className='font-bold  hover:text-pink-700'><Link to='/blog'>Blog</Link></li>
         {user?.uid ?
             <>
-                <li className='font-bold text-black'><Link to='/dasboard'>DashBoard</Link></li>
-                <li className='font-bold text-black'><button onClick={handleLogOut}>Sign Out</button></li>
+                <li className='font-bold  hover:text-pink-700'><Link to='/dasboard'>DashBoard</Link></li>
+                <li className='font-bold  hover:text-pink-700'><button onClick={handleLogOut}>Sign Out</button></li>
             </>
             :
-            <li className='font-bold text-black'><Link to='/login'>Login</Link></li>
+            <li className='font-bold  hover:text-pink-700'><Link to='/login'>Login</Link></li>
         }
         {user?.photoURL ?
             <img className=' w-12 h-12 rounded-full dark:bg-gray-500'
@@ -38,7 +39,7 @@ const Navbar = () => {
     return (
 
         <div>
-            <div className="navbar flex justify-between text-primary-content mt-4 rounded-lg">
+            <div className="navbar flex justify-between  mt-4 rounded-lg">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -48,7 +49,7 @@ const Navbar = () => {
                             {menuItems}
                         </ul>
                     </div>
-                    <Link to='/' className="btn btn-ghost normal-case text-xl font-bold hover:text-3xl text-black">MOTORS <img className='w-10 h-10 ml-3 rounded-lg' src={moto} alt="" /></Link>
+                    <Link to='/' className="btn btn-ghost normal-case text-xl font-bold ">MOTORS <img className='w-10 h-10 ml-3 rounded-lg' src={moto} alt="" /></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">

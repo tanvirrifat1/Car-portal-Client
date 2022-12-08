@@ -4,7 +4,9 @@ import useTitle from '../../UseTittle';
 const Blog = () => {
     useTitle('Blog')
     return (
-        <div className='mt-8'>
+        <div className='mt-8' data-aos="fade-down"
+            data-aos-easing="linear"
+            data-aos-duration="1500">
             <section className="p-6 dark:bg-gray-800 dark:text-gray-100 rounded-lg">
                 <div className="container mx-auto">
                     <h2 className="text-5xl font-bold text-center dark:text-gray-50">Here are some questions</h2>
