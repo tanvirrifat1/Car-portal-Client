@@ -32,7 +32,7 @@ const BookingModal = ({ bookingCar, setBookingCar }) => {
         console.log(booking)
 
         setBookingCar(null)
-        fetch('https://final-project-server-tanvirrifat1.vercel.app/orders', {
+        fetch('http://localhost:5000/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

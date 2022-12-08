@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaGoogle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
@@ -16,10 +17,11 @@ const SignUp = () => {
     const [token] = useToken(createUserEmail)
     const navigate = useNavigate()
 
-    if (token) {
-        navigate('/')
-    }
-
+    useEffect(() => {
+        if (token) {
+            navigate('/')
+        }
+    }, [token])
     const handleSignUp = (data) => {
         console.log(data);
         setSignUPError('');
@@ -57,7 +59,7 @@ const SignUp = () => {
 
     const saveUser = (name, email, role) => {
         const user = { name, email, role };
-        fetch('https://final-project-server-tanvirrifat1.vercel.app/users', {
+        fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -103,7 +105,7 @@ const SignUp = () => {
                         <select  {...register("role")} className="select  select-ghost border-1 input-bordered w-full  ">
                             <option selected>buyer</option>
 
-                            <option >seller</option>
+                            <option selected>seller</option>
 
                         </select>
                     </div>

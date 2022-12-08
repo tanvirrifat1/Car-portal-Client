@@ -16,7 +16,7 @@ const AddProducts = () => {
     const [carData, setCarData] = useState([])
     const categoryId = carData;
     useEffect(() => {
-        fetch('https://final-project-server-tanvirrifat1.vercel.app/category')
+        fetch('http://localhost:5000/category')
             .then(res => res.json())
             .then(data => {
                 setCarData(data)
@@ -69,7 +69,7 @@ const AddProducts = () => {
                     author
                 }
 
-                fetch('https://final-project-server-tanvirrifat1.vercel.app/addcar', {
+                fetch('http://localhost:5000/addcar', {
                     method: 'PUT',
                     headers: {
                         'content-type': 'application/json'
@@ -92,7 +92,7 @@ const AddProducts = () => {
     return (
         <div>
             {
-                carData.map(cardt =>
+                carData?.map(cardt =>
                     console.log(cardt._id)
                 )
             }

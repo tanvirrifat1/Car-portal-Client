@@ -42,7 +42,7 @@ const router = createBrowserRouter([
             {
                 path: '/car/:id',
                 element: <PrivateRoute><AllCar></AllCar></PrivateRoute>,
-                loader: ({ params }) => fetch(`https://final-project-server-tanvirrifat1.vercel.app/allcar/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/allcar/${params.id}`)
             },
         ]
     },
@@ -62,7 +62,7 @@ const router = createBrowserRouter([
             {
                 path: '/dasboard/payment/:id',
                 element: <AdminRoutes><Payment></Payment></AdminRoutes>,
-                loader: ({ params }) => fetch(`https://final-project-server-tanvirrifat1.vercel.app/orders/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/orders/${params.id}`)
             },
             {
                 path: '/dasboard/allproducts',

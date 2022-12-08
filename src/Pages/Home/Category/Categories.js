@@ -9,7 +9,7 @@ const Categories = () => {
     console.log(carData)
 
     useEffect(() => {
-        fetch(`https://final-project-server-tanvirrifat1.vercel.app/category`)
+        fetch(`http://localhost:5000/category`)
             .then(res => res.json())
             .then(data => {
                 setCarData(data)
@@ -21,7 +21,7 @@ const Categories = () => {
             <div className=' justify-center grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 {
                     carData?.map(data => <div className='mt-3'>
-                        <div className="card w-96 bg-base-100 shadow-xl">
+                        <div data-aos="zoom-in" data-aos-duration="2500" data-aos-easing="linear" className="card w-96 bg-base-100 shadow-xl">
                             <figure><img src={img} alt="Shoes" /></figure>
                             <div className="card-body">
                                 <div className="card-actions justify-center w-full ">

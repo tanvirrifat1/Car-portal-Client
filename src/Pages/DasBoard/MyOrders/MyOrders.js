@@ -3,14 +3,15 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import useTitle from '../../../UseTittle';
+import Loading from '../../Home/Loading/Loading';
 
 const MyOrders = () => {
     useTitle('MyOrders')
     const { user } = useContext(AuthContext)
 
-    const url = `https://final-project-server-tanvirrifat1.vercel.app/orders?email=${user?.email}`
+    const url = `http://localhost:5000/orders?email=${user?.email}`
 
-    const { data: orders = [] } = useQuery({
+    const { data: orders = [], isLoading } = useQuery({
         queryKey: ['orders', user?.email],
         queryFn: async () => {
             const res = await fetch(url, {
@@ -22,7 +23,9 @@ const MyOrders = () => {
             return data
         }
     })
-
+    if (isLoading) {
+        <Loading></Loading>
+    }
     return (
         <div>
             <h3 className="text3xl">All Options</h3>
@@ -46,7 +49,7 @@ const MyOrders = () => {
                     </thead>
                     <tbody>
 
-                        {
+                        {orders.length >= 0 &&
                             orders?.map((order, i) =>
                                 <tr key={order._id}>
                                     <th>{i + 1}</th>

@@ -12,7 +12,7 @@ const ManageProducts = () => {
         queryKey: ['myproduct'],
         queryFn: async () => {
             try {
-                const res = await fetch(`https://final-project-server-tanvirrifat1.vercel.app/myproduct?email=${user?.email}`, {
+                const res = await fetch(`http://localhost:5000/myproduct?email=${user?.email}`, {
                     headers: {
                         authorization: `bearer ${localStorage.getItem('accessToken')}`
                     }
@@ -28,7 +28,7 @@ const ManageProducts = () => {
     })
 
     const handleDeleteProduct = product => {
-        fetch(`https://final-project-server-tanvirrifat1.vercel.app/products/${product?._id}`, {
+        fetch(`http://localhost:5000/products/${product?._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -47,25 +47,8 @@ const ManageProducts = () => {
         return <Loading></Loading>
     }
 
-    const addProductInAdvertise = (id) => {
-        console.log(id);
-        fetch(
-            `http://localhost:5000/advertise/${id}`,
-            {
-                method: "PUT",
-                headers: {
-                    "content-type": "application/json",
-                },
-            }
-        )
-            .then((res) => res.json())
-            .then((data) => {
-                if (data.matchedCount > 0) {
-                    toast.success("successfully added the product on advertise", { autoClose: 500 });
-                }
-                console.log(data, "the advertised prduct");
-            });
-    }
+
+
     return (
         <div>
             <h2 className="text-3xl">Manage Products {products?.length}</h2>
@@ -106,7 +89,7 @@ const ManageProducts = () => {
                                     </button></td>
                                     <td>
                                         <button
-                                            onClick={() => addProductInAdvertise(product._id)}
+
                                             className="btn btn-info"
                                         >
                                             advertise
