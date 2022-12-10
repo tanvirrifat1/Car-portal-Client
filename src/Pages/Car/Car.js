@@ -11,7 +11,7 @@ import img6 from '../../asstesFile/car6.webp'
 
 const Car = () => {
 
-    const CarArray = [1, 2, 3, 4, 5, 6]
+
 
     const carItem = [
         {
@@ -23,19 +23,19 @@ const Car = () => {
             image: img2
         },
         {
-            id: 1,
+            id: 3,
             image: img3
         },
         {
-            id: 1,
+            id: 4,
             image: img4
         },
         {
-            id: 1,
+            id: 5,
             image: img5
         },
         {
-            id: 1,
+            id: 6,
             image: img6
         },
     ]

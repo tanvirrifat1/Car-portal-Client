@@ -5,7 +5,7 @@ const Cars = ({ Car }) => {
     const { image } = Car
     return (
         <div className='card-details'>
-            <div className="card w-96 bg-base-100 shadow-xl">
+            <div className="card w-96  shadow-xl">
                 <div className="card-body">
                     <img src={image} alt="" className='rounded-lg' />
 

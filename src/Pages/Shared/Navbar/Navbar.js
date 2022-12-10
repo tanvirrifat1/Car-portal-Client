@@ -18,7 +18,7 @@ const Navbar = () => {
 
     const menuItems = <>
         <li className='font-bold  hover:text-pink-700'><Link to='/'>Home</Link></li>
-        <li className='font-bold  hover:text-pink-700'><Link to='/collection'>Collection</Link></li>
+        {/* <li className='font-bold  hover:text-pink-700'><Link to='/collection'>Collection</Link></li> */}
         <li className='font-bold  hover:text-pink-700'><Link to='/blog'>Blog</Link></li>
         {user?.uid ?
             <>
