@@ -16,7 +16,7 @@ const AddProducts = () => {
     const [carData, setCarData] = useState([])
     const categoryId = carData;
     useEffect(() => {
-        fetch('http://localhost:5000/category')
+        fetch('https://final-project-server-tanvirrifat1.vercel.app/category')
             .then(res => res.json())
             .then(data => {
                 setCarData(data)
@@ -69,7 +69,7 @@ const AddProducts = () => {
                     author
                 }
 
-                fetch('http://localhost:5000/addcar', {
+                fetch('https://final-project-server-tanvirrifat1.vercel.app/addcar', {
                     method: 'PUT',
                     headers: {
                         'content-type': 'application/json'
@@ -143,7 +143,7 @@ const AddProducts = () => {
                                 <label className='block mb-2 text-sm'>
                                     Select Car Image:
                                 </label>
-                                <div htmlFor='image' className='border border-4 bg-white border-black'>
+                                <div htmlFor='image' className=' border-4 bg-white border-black'>
                                     <input
 
                                         type='file'
@@ -188,7 +188,7 @@ const AddProducts = () => {
 
 
                             <div className="form-control mt-6">
-                                <button className="btn btn-primary">Login</button>
+                                <button className="btn btn-outline btn-primary">Submit</button>
                             </div>
                         </div>
                     </form>

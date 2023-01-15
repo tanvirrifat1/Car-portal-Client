@@ -9,7 +9,7 @@ const MyOrders = () => {
     useTitle('MyOrders')
     const { user } = useContext(AuthContext)
 
-    const url = `http://localhost:5000/orders?email=${user?.email}`
+    const url = `https://final-project-server-tanvirrifat1.vercel.app/orders?email=${user?.email}`
 
     const { data: orders = [], isLoading } = useQuery({
         queryKey: ['orders', user?.email],

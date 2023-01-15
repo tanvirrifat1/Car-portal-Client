@@ -17,11 +17,11 @@ const SignUp = () => {
     const [token] = useToken(createUserEmail)
     const navigate = useNavigate()
 
-    useEffect(() => {
-        if (token) {
-            navigate('/')
-        }
-    }, [token])
+
+    if (token) {
+        navigate('/')
+    }
+
     const handleSignUp = (data) => {
         console.log(data);
         setSignUPError('');
@@ -59,7 +59,7 @@ const SignUp = () => {
 
     const saveUser = (name, email, role) => {
         const user = { name, email, role };
-        fetch('http://localhost:5000/users', {
+        fetch('https://final-project-server-tanvirrifat1.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

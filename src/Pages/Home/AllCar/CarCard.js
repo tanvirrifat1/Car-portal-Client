@@ -33,7 +33,7 @@ const CarCard = ({ carCard, setBookingCar }) => {
                 <div className='flex justify-center mb-6 mt-3'>
                     <label
                         htmlFor="booking-modal"
-                        className='btn btn-primary text-xl'
+                        className='btn btn-outline btn-primary text-xl'
                         onClick={() => setBookingCar(carCard)}
                     >Book Now</label>
                 </div>

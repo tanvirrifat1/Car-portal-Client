@@ -41,11 +41,12 @@ const Car = () => {
     ]
 
     return (
-        <div>
+        <div className='container mx-auto'>
             <h1 className='text-3xl mt-6 font-bold text-center p-4'>Our ChoiceAble Cars</h1>
 
             <div className='grid lg:grid-cols-3 gap-4 md:grid-cols-2 sm:grid-cols-1 '>
-                {carItem.map((Car, i) => <Cars key={i}
+                {carItem.map((Car, i) => <Cars
+                    key={i}
                     Car={Car}
                 ></Cars>)}
             </div>

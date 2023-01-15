@@ -2,6 +2,7 @@ import React from 'react';
 import useTitle from '../../../UseTittle';
 import Slider from '../../Blog/Slider/Slider';
 import Car from '../../Car/Car';
+import Other from '../../Other/Other';
 import Categories from '../Category/Categories';
 import Hero from '../Hero/Hero';
 
@@ -13,6 +14,7 @@ const Home = () => {
             <Categories></Categories>
             <Car></Car>
             <Hero></Hero>
+            <Other></Other>
         </div>
     );
 };

@@ -7,7 +7,7 @@ const Blog = () => {
         <div className='mt-8' data-aos="fade-down"
             data-aos-easing="linear"
             data-aos-duration="1500">
-            <section className="p-6 dark:bg-gray-800 dark:text-gray-100 rounded-lg">
+            <section className="p-6 text-white rounded-lg">
                 <div className="container mx-auto">
                     <h2 className="text-5xl font-bold text-center dark:text-gray-50">Here are some questions</h2>
                     <div className="grid gap-6 my-16 lg:grid-cols-3">
