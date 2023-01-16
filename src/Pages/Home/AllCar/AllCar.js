@@ -1,5 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { AuthContext } from '../../../contexts/AuthProvider';
 import useTitle from '../../../UseTittle';
 import BookingModal from '../../BookingModal/BookingModal';
 import CarCard from './CarCard';
@@ -11,6 +14,7 @@ const AllCar = () => {
 
     const [bookingCar, setBookingCar] = useState([])
 
+    const { user } = useContext(AuthContext)
 
     return (
         <div className='flex justify-center'>
@@ -23,15 +27,22 @@ const AllCar = () => {
                     ></CarCard>)
                 }
             </div>
-            {
-                bookingCar &&
-                <BookingModal
-                    bookingCar={bookingCar}
-                    setBookingCar={setBookingCar}
-                ></BookingModal>
+            {user?.email ?
+                < div >
+                    {
+                        bookingCar &&
+                        <BookingModal
+                            bookingCar={bookingCar}
+                            setBookingCar={setBookingCar}
+                        ></BookingModal>
+                    }
+                </div>
+                : toast.success('Please Login Fast', { autoClose: 1500 })
             }
-        </div>
+        </div >
     );
 };
 
 export default AllCar;
+
+

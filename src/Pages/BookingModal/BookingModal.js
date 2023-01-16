@@ -43,7 +43,7 @@ const BookingModal = ({ bookingCar, setBookingCar }) => {
             .then(data => {
                 if (data.acknowledged) {
                     console.log(data)
-                    toast.success('Booking Confirmed', { autoClose: 500 })
+                    toast.success('Booking Confirmed please go to Dashboard', { autoClose: 1000 })
                 }
             })
 
