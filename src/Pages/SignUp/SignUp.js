@@ -79,56 +79,78 @@ const SignUp = () => {
     }
 
     return (
-        <div className='h-[800px] flex justify-center items-center'>
-            <div className='w-96 p-7'>
-                <h2 className='text-xl text-center'>Sign Up</h2>
-                <form onSubmit={handleSubmit(handleSignUp)}>
-                    <div className="form-control w-full max-w-xs">
-                        <label className="label"> <span className="label-text">Name</span></label>
-                        <input type="text" {...register("name", {
-                            required: "Name is Required"
-                        })} className="input input-bordered w-full max-w-xs" />
-                        {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
+        <div data-aos="fade-up"
+            data-aos-anchor-placement="center-bottom" data-aos-duration="2000">
+            <div className="hero ">
+                <div className="hero-content flex-col lg:flex-row">
+                    <img src="https://img.freepik.com/free-vector/cyber-data-security-online-concept-illustration-internet-security-information-privacy-protection_1150-37328.jpg?w=826&t=st=1673842559~exp=1673843159~hmac=cf4d775fdb4c44057c811e478a686c4a2c3cddf4bbd29cbbdca0b24145eb2b79" alt='' className="max-w-sm h-[500px] rounded-lg shadow-2xl" />
+                    <div>
+                        <div className='h-[800px] flex justify-center items-center'>
+                            <div className='w-96 p-7'>
+                                <h2 className='text-xl text-center'>Sign Up</h2>
+                                <form onSubmit={handleSubmit(handleSignUp)}>
+                                    <div className="form-control w-full max-w-xs">
+                                        <label className="label"> <span className="label-text">Name</span></label>
+                                        <input type="text" {...register("name", {
+                                            required: "Name is Required"
+                                        })} className="input input-bordered w-full max-w-xs" />
+                                        {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
+                                    </div>
+                                    <div className="form-control w-full max-w-xs">
+                                        <label className="label"> <span className="label-text">Email</span></label>
+                                        <input type="email" {...register("email", {
+                                            required: true
+                                        })} className="input input-bordered w-full max-w-xs" />
+                                        {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
+                                    </div>
+
+                                    <div className="form-control">
+                                        <label className="label">
+                                            <span className="label-text">Account Type</span>
+                                        </label>
+                                        <select  {...register("role")} className="select  select-ghost border-1 input-bordered w-full  ">
+                                            <option selected>buyer</option>
+
+                                            <option selected>seller</option>
+
+                                        </select>
+                                    </div>
+
+                                    <div className="form-control w-full max-w-xs">
+                                        <label className="label"> <span className="label-text">Password</span></label>
+                                        <input type="password" {...register("password", {
+                                            required: "Password is required",
+                                            minLength: { value: 6, message: "Password must be 6 characters long" },
+                                            pattern: { value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/, message: 'Password must have uppercase, number and special characters' }
+                                        })} className="input input-bordered w-full max-w-xs" />
+                                        {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
+                                    </div>
+                                    <input className='btn btn-primary w-full mt-4' value="Sign Up" type="submit" />
+                                    {signUpError && <p className='text-red-600'>{signUpError}</p>}
+                                </form>
+                                <p>Already have an account <Link className='text-secondary' to="/login">Please Login</Link></p>
+                                <div className="divider">OR</div>
+                                <button onClick={handleGoogleLogin} className="btn btn-outline btn-primary w-full"><FaGoogle className='mr-2 text-2xl'></FaGoogle> CONTINUE WITH GOOGLE</button>
+
+                            </div>
+                        </div>
                     </div>
-                    <div className="form-control w-full max-w-xs">
-                        <label className="label"> <span className="label-text">Email</span></label>
-                        <input type="email" {...register("email", {
-                            required: true
-                        })} className="input input-bordered w-full max-w-xs" />
-                        {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
-                    </div>
-
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Account Type</span>
-                        </label>
-                        <select  {...register("role")} className="select  select-ghost border-1 input-bordered w-full  ">
-                            <option selected>buyer</option>
-
-                            <option selected>seller</option>
-
-                        </select>
-                    </div>
-
-                    <div className="form-control w-full max-w-xs">
-                        <label className="label"> <span className="label-text">Password</span></label>
-                        <input type="password" {...register("password", {
-                            required: "Password is required",
-                            minLength: { value: 6, message: "Password must be 6 characters long" },
-                            pattern: { value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/, message: 'Password must have uppercase, number and special characters' }
-                        })} className="input input-bordered w-full max-w-xs" />
-                        {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
-                    </div>
-                    <input className='btn btn-primary w-full mt-4' value="Sign Up" type="submit" />
-                    {signUpError && <p className='text-red-600'>{signUpError}</p>}
-                </form>
-                <p>Already have an account <Link className='text-secondary' to="/login">Please Login</Link></p>
-                <div className="divider">OR</div>
-                <button onClick={handleGoogleLogin} className="btn btn-outline btn-primary w-full"><FaGoogle className='mr-2 text-2xl'></FaGoogle> CONTINUE WITH GOOGLE</button>
-
+                </div>
             </div>
         </div>
     );
 };
 
 export default SignUp;
+
+
+
+
+
+
+
+
+
+
+
+
