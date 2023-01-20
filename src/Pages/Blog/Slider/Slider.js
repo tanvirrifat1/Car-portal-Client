@@ -26,7 +26,7 @@ const Slider = () => {
         <div className='' data-aos="zoom-out-right" data-aos-duration="2000">
             <div
                 style={{
-                    backgroundColor: '#6b0f24',
+                    backgroundColor: '#6A1B4D',
                 }}
                 className="hero p-16  text-white">
                 <div className="hero-content flex-col lg:flex-row-reverse">

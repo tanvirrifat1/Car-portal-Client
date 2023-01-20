@@ -37,12 +37,10 @@ const AllCar = () => {
                         ></BookingModal>
                     }
                 </div>
-                : toast.success('Please Login Fast', { autoClose: 1500 })
+                : toast.warning('Please Login Fast', { autoClose: 1500 })
             }
         </div >
     );
 };
 
 export default AllCar;
-
-

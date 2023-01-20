@@ -40,7 +40,7 @@ const Navbar = () => {
 
         <div
             style={{
-                backgroundColor: '#6b0f24',
+                backgroundColor: '#6A1B4D',
             }}
         >
             <div className="navbar flex justify-between text-white p-8 rounded-lg">
