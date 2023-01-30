@@ -5,9 +5,9 @@ const Footer = () => {
         <div className='mt-28'>
             <footer
                 style={{
-                    backgroundColor: '#6A1B4D',
+                    backgroundColor: '#5a2e14',
                 }}
-                className="footer text-white p-10 bg-base-200 text-base-content">
+                className="footer text-white p-10 bg-base-200 ">
                 <div>
                     <span className="footer-title">Services</span>
                     <a className="link link-hover">Branding</a>

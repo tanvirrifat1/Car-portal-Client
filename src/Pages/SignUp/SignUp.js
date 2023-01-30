@@ -125,12 +125,12 @@ const SignUp = () => {
                                         })} className="input input-bordered w-full max-w-xs" />
                                         {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
                                     </div>
-                                    <input className='btn btn-primary w-full mt-4' value="Sign Up" type="submit" />
+                                    <input className='btn btn-accent w-full mt-4' value="Sign Up" type="submit" />
                                     {signUpError && <p className='text-red-600'>{signUpError}</p>}
                                 </form>
                                 <p>Already have an account <Link className='text-secondary' to="/login">Please Login</Link></p>
                                 <div className="divider">OR</div>
-                                <button onClick={handleGoogleLogin} className="btn btn-outline btn-primary w-full"><FaGoogle className='mr-2 text-2xl'></FaGoogle> CONTINUE WITH GOOGLE</button>
+                                <button onClick={handleGoogleLogin} className="btn btn-outline btn-error w-full"><FaGoogle className='mr-2 text-2xl'></FaGoogle> CONTINUE WITH GOOGLE</button>
 
                             </div>
                         </div>
